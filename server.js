@@ -47,7 +47,7 @@ app.get('/app/roll/:sides/:dice', (req, res, next) => {
     // res.json(JSON.stringify(roll(parseInt(req.params.sides), parseInt(req.params.dice), 1))).end();
 })
 
-app.get('/app/roll/:sides/:dice/:rolls', (req, res, next) => {
+app.use('/app/roll/:sides/:dice/:rolls', (req, res, next) => {
 	res.status(200);
     res.send(roll(parseInt(req.params.sides), parseInt(req.params.dice), parseInt(req.params.rolls))).end();
     // res.json(JSON.stringify(roll(parseInt(req.params.sides), parseInt(req.params.dice), parseInt(req.params.rolls)))).end();
@@ -58,5 +58,7 @@ app.use((req, res) => {
 })
 
 app.listen(port, (err) => {
-	console.log("Server listening on port " + port);
+	console.log("Server port is " + port);
 })
+
+process.exit(0);
