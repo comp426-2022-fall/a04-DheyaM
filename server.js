@@ -18,9 +18,9 @@ app.get('/app/roll', (req, res, next) => {
 })
 
 app.get('/app/roll', (req, res, next) => {
-    let side = req.body.sides || req.query.sides || 6;
-    let dice = req.body.dice || req.query.dice || 2;
-    let roll = req.body.rolls || req.query.rolls || 1;
+    let side = parseInt(req.body.sides) || parseInt(req.query.sides);
+    let dice = parseInt(req.body.dice) || parseInt(req.query.dice);
+    let roll = parseInt(req.body.rolls) || parseInt(req.query.rolls);
 	res.status(200);
     res.send(roll(side,dice,roll)).end();
 })
