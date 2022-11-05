@@ -18,7 +18,7 @@ app.get('/app', (req, res, next) => {
 
 app.get('/app/roll', (req, res, next) => {
 	res.status(200);
-    res.json(JSON.stringify(roll(6, 2, 1)));
+    res.json(JSON.stringify(roll(6, 2, 1))).end();
 })
 
 app.get('/app/roll', (req, res, next) => {
@@ -27,26 +27,27 @@ app.get('/app/roll', (req, res, next) => {
     let roll = req.body.rolls || req.query.rolls;
 
 	res.status(200);
-    res.json(JSON.stringify(roll(side,dice,roll)));
+    res.json(JSON.stringify(roll(side,dice,roll))).end();
 })
 
 app.get('/app/roll/:sides', (req, res, next) => {
 	res.status(200)
-    res.json(JSON.stringify(roll(req.params.sides, 2, 1)));
+    res.json(JSON.stringify(roll(req.params.sides, 2, 1))).end();
 })
 
 app.get('/app/roll/:sides/:dice', (req, res, next) => {
-	res.status(200)
-    res.json(JSON.stringify(roll(req.params.sides, req.params.dice, 1)));
+	res.status(200);
+    res.json(JSON.stringify(roll(req.params.sides, req.params.dice, 1))).end();
 })
 
 app.get('/app/roll/:sides/:dice/:rolls', (req, res, next) => {
-	res.status(200)
-    res.json(JSON.stringify(roll(req.params.sides, req.params.dice, req.params.rolls)));
+	res.status(200);
+    res.json(JSON.stringify(roll(req.params.sides, req.params.dice, req.params.rolls))).end();
 })
 
 app.use(function(req, res){
-	res.status(404).send("404 NOT FOUND");
+	res.status(404);
+    res.send("404 NOT FOUND").end();
 })
 
 app.listen(port, () => {
