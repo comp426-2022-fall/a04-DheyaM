@@ -7,13 +7,12 @@ const args = minimist(process.argv.slice(2));
 
 const port = args.port ? args.port: 5000;
 
-app.listen(port, () => {
-	console.log("Server listening on port" + port)
-})
+
 
 app.get('/app', (req, res, next) => {
 	res.statusCode = 200;
     res.statusMessage = "OK"
+    res.writeHead(res.statusCode, { 'Content-Type' : 'text/plain' });
     res.end(res.statusCode+' '+res.statusMessage)
 })
 
@@ -39,5 +38,9 @@ app.get('/app/roll/:sides/:dice/:rolls', (req, res, next) => {
 })
 
 app.use(function(req, res){
-	res.status(404).send("NOT FOUND");
+	res.status(404).send("404 NOT FOUND");
+})
+
+app.listen(port, () => {
+	console.log("Server listening on port" + port)
 })
