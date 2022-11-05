@@ -12,7 +12,7 @@ app.get('/app', (req, res, next) => {
 })
 
 app.get('/app/roll', (req, res, next) => {
-	res.json(JSON.stringify(roll(6, 2, 1)));
+	res.status(200).send(JSON.stringify(roll(6, 2, 1)));
 })
 
 app.post('/app/roll', (req, res, next) => {
