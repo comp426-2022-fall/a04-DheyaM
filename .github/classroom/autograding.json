@@ -37,7 +37,7 @@
       "input": "",
       "output": "5555",
       "comparison": "included",
-      "timeout": 1,
+      "timeout": 10,
       "points": 5000
     },
     {
