@@ -2,17 +2,25 @@ import {roll} from "./lib/roll.js";
 import express from "express";
 import minimist from "minimist";
 
+const express = require("express")
 const app = express()
 const args = minimist(process.argv.slice(2));
 
 const port = args.port ? args.port: 5000;
 
+app.listen(port, () => {
+	console.log("Server listening on port" + port)
+})
+
 app.get('/app', (req, res, next) => {
-	res.status(200).send('OK');
+	res.statusCode = 200;
+    res.statusMessage = "OK"
+    res.end(res.statusCode+' '+res.statusMessage)
 })
 
 app.get('/app/roll', (req, res, next) => {
-	res.status(200).send(JSON.stringify(roll(6, 2, 1)));
+	res.status(200);
+    res.json(JSON.stringify(roll(6, 2, 1)));
 })
 
 app.post('/app/roll', (req, res, next) => {
@@ -34,9 +42,3 @@ app.get('/app/roll/:sides/:dice/:rolls', (req, res, next) => {
 app.get('*', function(req, res){
 	res.status(404).send("NOT FOUND");
 })
-
-app.listen(port, () => {
-	console.log("Server listening on port" + port)
-})
-
-process.exit(0)
