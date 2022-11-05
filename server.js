@@ -9,12 +9,12 @@ const args = minimist(process.argv.slice(2));
 const port = args.port ? args.port: 5000;
 
 app.get('/app', (req, res, next) => {
-	res.send("200 OK").end()
+	res.send("200 OK");
 })
 
 app.get('/app/roll', (req, res, next) => {
 	res.status(200);
-    res.send(roll(6, 2, 1)).end();
+    res.send(roll(6, 2, 1));
 })
 
 app.get('/app/roll', (req, res, next) => {
@@ -22,26 +22,26 @@ app.get('/app/roll', (req, res, next) => {
     let dice = parseInt(req.params.dice) || parseInt(req.query.dice);
     let roll = parseInt(req.params.rolls) || parseInt(req.query.rolls);
 	res.status(200);
-    res.send(roll(side,dice,roll)).end();
+    res.send(roll(side,dice,roll));
 })
 
 app.get('/app/roll/:sides', (req, res, next) => {
 	res.status(200)
-    res.send(roll(parseInt(req.params.sides), 2, 1)).end();
+    res.send(roll(parseInt(req.params.sides), 2, 1));
 })
 
 app.get('/app/roll/:sides/:dice', (req, res, next) => {
 	res.status(200);
-    res.send(roll(parseInt(req.params.sides), parseInt(req.params.dice), 1)).end();
+    res.send(roll(parseInt(req.params.sides), parseInt(req.params.dice), 1));
 })
 
 app.use('/app/roll/:sides/:dice/:rolls', (req, res, next) => {
 	res.status(200);
-    res.send(roll(parseInt(req.params.sides), parseInt(req.params.dice), parseInt(req.params.rolls))).end();
+    res.send(roll(parseInt(req.params.sides), parseInt(req.params.dice), parseInt(req.params.rolls)));
 })
 
-app.use((req, res) => {
-	res.status(404).send("404 NOT FOUND").end();
+app.use((req, res, next) => {
+	res.status(404).send("404 NOT FOUND");
 })
 
 app.listen(port, (err) => {
