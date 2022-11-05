@@ -38,6 +38,6 @@ app.get('/app/roll/:sides/:dice/:rolls', (req, res, next) => {
 	res.status(200).send(JSON.stringify(roll(req.params['sides'], req.params['dice'], req.params['rolls'])));
 })
 
-app.get('*', function(req, res){
+app.use(function(req, res){
 	res.status(404).send("NOT FOUND");
 })
