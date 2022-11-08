@@ -33,9 +33,13 @@ app.get('/app/roll/:sides/:dice', (req, res, next) => {
 
 
 app.get('/app/roll', (req, res, next) => {
-    let side = parseInt(req.params.sides) || parseInt(req.query.sides) || 6;
-    let dice = parseInt(req.params.dice) || parseInt(req.query.dice) || 2;
-    let roll = parseInt(req.params.rolls) || parseInt(req.query.rolls) || 1;
+    var side = parseInt(req.params.sides) ? parseInt(req.params.sides) : 6;
+    var dice = parseInt(req.params.dice) ? parseInt(req.params.dice) : 2;
+    var roll = parseInt(req.params.rolls) ? parseInt(req.params.rolls) : 1;
+
+    // let side = parseInt(req.params.sides) || parseInt(req.query.sides) || 6;
+    // let dice = parseInt(req.params.dice) || parseInt(req.query.dice) || 2;
+    // let roll = parseInt(req.params.rolls) || parseInt(req.query.rolls) || 1;
 	// res.status(200);
     res.send(roll(side,dice,roll));
     res.end()
