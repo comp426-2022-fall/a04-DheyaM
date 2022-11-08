@@ -6,6 +6,7 @@
   "bin": {
     "roll-dice": "./bin/cli.js"
   },
+  "type":"module",
   "scripts": {
     "test": "npm roll.js"
   },
