@@ -8,7 +8,7 @@
   },
   "type":"module",
   "scripts": {
-    "test": "npm roll.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
     "roll"
   ],
   "author": "DheyaM",
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/comp426-2022-fall/a03-DheyaM/issues"
   },
