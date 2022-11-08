@@ -31,11 +31,17 @@ app.get('/app/roll/:sides/:dice', (req, res, next) => {
     res.end()
 })
 
+app.use('/app/roll/:sides/:dice/:rolls', (req, res, next) => {
+	// res.status(200);
+    res.send(roll(parseInt(req.params.sides), parseInt(req.params.dice), parseInt(req.params.rolls)));
+    res.end()
+})
+
 
 app.get('/app/roll', (req, res, next) => {
-    var side = parseInt(req.params.sides) ? parseInt(req.params.sides) : 6;
-    var dice = parseInt(req.params.dice) ? parseInt(req.params.dice) : 2;
-    var roll = parseInt(req.params.rolls) ? parseInt(req.params.rolls) : 1;
+    var side = req.params.sides ? parseInt(req.params.sides) : 6;
+    var dice = req.params.dice ? parseInt(req.params.dice) : 2;
+    var roll = req.params.rolls ? parseInt(req.params.rolls) : 1;
 
     // let side = parseInt(req.params.sides) || parseInt(req.query.sides) || 6;
     // let dice = parseInt(req.params.dice) || parseInt(req.query.dice) || 2;
@@ -45,12 +51,6 @@ app.get('/app/roll', (req, res, next) => {
     res.end()
 })
 
-
-app.use('/app/roll/:sides/:dice/:rolls', (req, res, next) => {
-	// res.status(200);
-    res.send(roll(parseInt(req.params.sides), parseInt(req.params.dice), parseInt(req.params.rolls)));
-    res.end()
-})
 
 app.use((req, res, next) => {
 	res.status(404).send("404 NOT FOUND");
