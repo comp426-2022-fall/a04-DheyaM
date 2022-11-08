@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import roll from "./lib/lib/roll.js";
+import Roll from "./lib/lib/Roll.js";
 import express from "express";
 import minimist from "minimist";
 
@@ -15,25 +15,25 @@ app.get('/app', (req, res) => {
 
 app.get('/app/roll', (req, res, next) => {
 	// res.status(200);
-    res.send(roll(6, 2, 1));
+    res.send(Roll(6, 2, 1));
     res.end()
 })
 
 app.get('/app/roll/:sides', (req, res, next) => {
 	// res.status(200)
-    res.send(roll(parseInt(req.params.sides), 2, 1));
+    res.send(Roll(parseInt(req.params.sides), 2, 1));
     res.end()
 })
 
 app.get('/app/roll/:sides/:dice', (req, res, next) => {
 	// res.status(200);
-    res.send(roll(parseInt(req.params.sides), parseInt(req.params.dice), 1));
+    res.send(Roll(parseInt(req.params.sides), parseInt(req.params.dice), 1));
     res.end()
 })
 
 app.use('/app/roll/:sides/:dice/:rolls', (req, res, next) => {
 	// res.status(200);
-    res.send(roll(parseInt(req.params.sides), parseInt(req.params.dice), parseInt(req.params.rolls)));
+    res.send(Roll(parseInt(req.params.sides), parseInt(req.params.dice), parseInt(req.params.rolls)));
     res.end()
 })
 
@@ -46,7 +46,7 @@ app.use('/app/roll', (req, res, next) => {
     // let dice = parseInt(req.params.dice) || parseInt(req.query.dice) || 2;
     // let roll = parseInt(req.params.rolls) || parseInt(req.query.rolls) || 1;
 	// res.status(200);
-    res.send(roll(side,dice,roll));
+    res.send(Roll(side,dice,roll));
     res.end()
 })
 
