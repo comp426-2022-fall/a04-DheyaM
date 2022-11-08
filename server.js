@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import Roll from "./lib/lib/Roll.js";
+import Roll from "./lib/lib/roll.js";
 import express from "express";
 import minimist from "minimist";
 
@@ -42,6 +42,7 @@ app.use('/app/roll', (req, res, next) => {
     var side = req.params.sides ? parseInt(req.params.sides) : 6;
     var dice = req.params.dice ? parseInt(req.params.dice) : 2;
     var roll = req.params.rolls ? parseInt(req.params.rolls) : 1;
+
     // let side = parseInt(req.params.sides) || parseInt(req.query.sides) || 6;
     // let dice = parseInt(req.params.dice) || parseInt(req.query.dice) || 2;
     // let roll = parseInt(req.params.rolls) || parseInt(req.query.rolls) || 1;
