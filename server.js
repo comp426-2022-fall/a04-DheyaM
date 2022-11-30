@@ -28,12 +28,6 @@ app.get('/app/roll/:sides/:dice', (req, res, next) => {
     res.end()
 })
 
-app.post('/app/roll/:sides/:dice/:rolls', (req, res, next) => {
-    res.send(Roll(parseInt(req.body.sides), parseInt(req.body.dice), parseInt(req.body.rolls)));
-    res.end()
-})
-
-
 app.get('/app/roll', (req, res, next) => {
     var side = req.body.sides ? parseInt(req.body.sides) : 6;
     var dice = req.body.dice ? parseInt(req.body.dice) : 2;
@@ -45,6 +39,11 @@ app.get('/app/roll', (req, res, next) => {
 
 app.get((req, res, next) => {
 	res.status(404).send("404 NOT FOUND");
+    res.end()
+})
+
+app.post('/app/roll/:sides/:dice/:rolls', (req, res, next) => {
+    res.send(Roll(parseInt(req.body.sides), parseInt(req.body.dice), parseInt(req.body.rolls)));
     res.end()
 })
 
